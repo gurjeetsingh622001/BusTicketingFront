@@ -1,0 +1,29 @@
+.mat-card {
+    box-shadow: 10px 10px 10px black;
+    margin-top: 10px;
+    background-color: rgb(218, 229, 239);
+    opacity: 99%;
+}
+ 
+
+.form {
+    margin: 0 5px;
+}
+
+input {
+
+    height: 40px;
+}
+
+label {
+    color: gray;
+    font-weight: 900;
+    font-size: 20px;
+
+}
+.oops{
+    box-shadow: -10px 10px 10px black;
+    margin-top: 10px;
+    background-color: rgb(255, 255, 255);
+    opacity: 99%;   
+}

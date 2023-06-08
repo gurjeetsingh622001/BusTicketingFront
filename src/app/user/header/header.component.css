@@ -1,0 +1,14 @@
+.example-spacer {
+    flex: 1 1 auto;
+}
+
+mat-toolbar {
+    background-color: #011e41;
+}
+
+.my-span{
+    color: orange;
+}
+mat-icon{
+    color: azure;
+}

@@ -1,0 +1,86 @@
+<ngx-spinner type="ball-scale-multiple"></ngx-spinner>
+
+<div class="row">
+
+  <div class="col-1"></div>
+  <div class="col-4">
+    <mat-card>
+      <mat-card-content>
+
+        <form class="example-form">
+          <h1 class="mx-auto">Search your Journey</h1>
+
+          <mat-grid-list cols="2" rowHeight="100px">
+
+            <mat-grid-tile colspan="1">
+
+              <mat-form-field>
+                <mat-label>Source</mat-label>
+                <mat-select [(ngModel)]="pickUpPoint" name="pickup">
+                  <mat-option *ngFor="let from of getUniqueFromValues()" [value]="from">{{ from }}</mat-option>
+                </mat-select>
+              </mat-form-field>
+
+            </mat-grid-tile>
+
+            <mat-grid-tile colspan="1">
+
+              <mat-form-field>
+                <mat-label>Destination</mat-label>
+                <mat-select [(ngModel)]="destination" name="destination">
+                  <mat-option *ngFor="let to of getUniqueToValues()" [value]="to">{{ to }}</mat-option>
+                </mat-select>
+              </mat-form-field>
+
+            </mat-grid-tile>
+
+            <mat-grid-tile colspan="1">
+              <mat-form-field>
+                <mat-select placeholder="Select an option" [(ngModel)]="busName" name="busName" [(ngModel)]="busName">
+                  <mat-option value="Ashok Leyland">Ashok Leyland</mat-option>
+                  <mat-option value="SRS TRAVELS ">SRS TRAVELS</mat-option>
+                  <mat-option value="BHARAT BENZ">BHARAT BENZ</mat-option>
+                  <mat-option value="Volvo">Volvo</mat-option>
+                  <mat-option value="All">All</mat-option>
+                </mat-select>
+              </mat-form-field>
+            </mat-grid-tile>
+
+            <mat-grid-tile colspan="1">
+              <mat-form-field>
+                <input matInput [matDatepicker]="picker" placeholder="Journey Date" [(ngModel)]="date" name="date">
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+              </mat-form-field>
+            </mat-grid-tile>
+
+            <mat-grid-tile>
+             
+            </mat-grid-tile>
+
+            <mat-grid-tile>
+              <button class="btn" color="primary"
+                (click)="searchRoutes(pickUpPoint,destination,busName,date)">Search</button>
+
+            </mat-grid-tile>
+
+
+
+          </mat-grid-list>
+
+        </form>
+      </mat-card-content>
+    </mat-card>
+
+  </div>
+  <div class="col-1"></div>
+  <div class="col-6">
+    <mat-form-field>
+      <mat-label>Select an option</mat-label>
+      <mat-select>
+        <mat-option *ngFor="let option of routes" [value]="option">{{ option['from']}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+
+</div>

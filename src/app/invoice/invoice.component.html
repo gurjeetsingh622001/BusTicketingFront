@@ -1,0 +1,57 @@
+<ngx-spinner type="ball-scale-multiple"></ngx-spinner>
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-12 bg-light body_1">
+            <h1>Bus Ticket Invoice</h1>
+
+            <table>
+                <tr>
+                    <th>Bus Name</th>
+                    <th>Bus Number</th>
+                    <th>Pick Up</th>
+                    <th>Destination</th>
+                    <th>Price</th>
+                    <th>Date</th>
+                    <th>Qty</th>
+                </tr>
+                <tr>
+                    <td>{{busName}}</td>
+                    <td>{{busNumber}}</td>
+                    <td>{{pickUpPoint}}</td>
+                    <td>{{destination}}</td>
+                    <td>{{price}}</td>
+                    <td>{{date}}</td>
+                    <td>
+                        <a role="btn" (click)="decrease()">
+                            <i class="bi bi-dash-square-fill" style="font-size: 1.5rem; color: rgb(237, 100, 100);"></i>
+                        </a>
+                        {{Qty}}
+                        <a role="btn" (click)="increase()">
+                            <i class="bi bi-plus-square-fill" style="font-size: 1.5rem; color: rgb(100, 237, 125);"></i>
+                        </a>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td colspan="6" class="total">Total</td>
+                    <td class="total">{{ total |currency :'INR'}}</td>
+                </tr>
+                <tr>
+
+                <tr>
+                    <td colspan="7" class="total">
+
+                        <button class="btn btn-lg btn-warning" (click)="pay()">
+                            pay
+                        </button>
+                    </td>
+                </tr>
+
+
+            </table>
+
+
+        </div>
+    </div>
+</div>

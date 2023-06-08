@@ -1,0 +1,112 @@
+<ngx-spinner type="ball-scale-multiple"></ngx-spinner>
+
+<div class="row justify-content-center">
+
+    <div class="col-10  ">
+        <mat-card class="my-card">
+            <mat-list>
+                <mat-card-actions>
+
+                    <form [formGroup]="form">
+                        <div class="row justify-content-center">
+
+                            <div class="col form">
+                                <label>Pick Up Point</label><br>
+                                <input class="form-control" formControlName="from" autofocus="true">
+
+                            </div>
+
+                            <div class="col form">
+                                <label>Destination</label><br>
+                                <input class="form-control" formControlName="to">
+                            </div>
+
+                            <div class="col form">
+                                <label>Bus Name</label><br>
+                                <select placeholder="Select an option" formControlName="busName" class="form-control">
+                                    <option value="Ashok Leyland">Ashok Leyland</option>
+                                    <option value="SRS TRAVELS ">SRS TRAVELS</option>
+                                    <option value="BHARAT BENZ">BHARAT BENZ</option>
+                                    <option value="Volvo">Volvo</option>
+                                    <option value="All">All</option>
+                                </select>
+
+                            </div>
+
+                            <div class="col form">
+                                <label>Journey Date</label><br>
+                                <input class="form-control" formControlName="date">
+                            </div>
+
+                            <div class="col form mt-4 ">
+                                <button mat-raised-button color="primary" (click)=" getSearchResults()">Search</button>
+                            </div>
+
+                        </div>
+                    </form>
+
+
+                </mat-card-actions>
+            </mat-list>
+        </mat-card>
+
+    </div>
+
+</div>
+
+<div class="row justify-content-center" *ngIf="noRouteFound">
+    <div class="col">5</div>
+    <div class="col oops">
+        <h1>No Route found</h1>
+        <img src="../../../assets/pngaaa.com-208508.png" height="100px">
+    </div>
+
+    <div class="col">5</div>
+
+</div>
+
+<div class="row justify-content-center">
+    <div class="col-10  ">
+        <mat-card *ngFor="let route of routeData">
+            <mat-list>
+                <mat-card-actions>
+
+                    <div class="row justify-content-center">
+
+                        <div class="col form ms-5">
+                            <h4> {{route['busId']['busNumber']}}</h4>
+                            <h4>from: {{route['from']}}</h4>
+                            <h4>to: {{route['to']}}</h4>
+                        </div>
+                        <div class="col form ms-5">
+                            <h2> {{route['busId']['busName']}}</h2>
+                        </div>
+
+                        <div class="col form">
+                            <h2> {{route['departureTime']}}</h2>
+                        </div>
+
+                        <div class="col form">
+                            <h2>{{route['arrivalTime']}}</h2>
+                        </div>
+
+                        <div class="col form">
+                            <h2>{{route['price'] | currency: 'INR'}}</h2>
+
+                        </div>
+
+                        <div class="col form">
+                            <button mat-raised-button color="primary" (click)="bookTickect(
+                                route['busId']['busNumber'],route['busId']['busName'],route['price']
+                                )">Book</button>
+                        </div>
+
+                    </div>
+
+
+                </mat-card-actions>
+            </mat-list>
+        </mat-card>
+
+    </div>
+</div>
